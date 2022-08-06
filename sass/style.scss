@@ -4,32 +4,39 @@
      padding: 0;
      box-sizing: border-box;
 }
+
+//Colors
+@import "./colors/colors.scss";
+
+//Mixin
+@import "./common/mixin.scss";
+
  :root {
      font-family: 'Nunito', sans-serif;
 }
+
 /* Informações iniciais */
  .data-infobg {
-     background: #122ab2;
+     background: $background-header;
 }
  .data-info {
      max-width: 960px;
      margin: 0 auto;
      padding: 10px;
-     color: white;
-     font-family: var(Nunito);
      display: flex;
      flex-wrap: wrap;
      justify-content: space-between;
+     @include text-conf($font-color-primary, 14px, 'Nunito,sans-serif');
 }
  .data-info a {
      list-style: none;
      text-decoration: none;
-     color: white;
+     color: $font-color-primary;
      cursor: pointer;
 }
 /* Header Logo MenuBar */
  .logo-navbg {
-     background: #2c70ff;
+     background: $background-navbar;
 }
  .logo-nav {
      max-width: 960px;
@@ -40,7 +47,7 @@
      padding: 10px;
 }
  .logo-nav h1 {
-     color: white;
+     color: $font-color-primary;
      font-size: 2.25 em;
      font-weight: bold;
      cursor: pointer ;
@@ -52,29 +59,32 @@
      gap: 25px;
 }
  .logo-nav ul li {
-     color: white;
+     color: $font-color-primary;
      list-style: none;
      font-size: 1.25em;
      display: block;
      cursor: pointer;
+     transition: 0.4s;
 }
- .menu-bar li:hover {
-     color: #122ab2;
+.item{
+ &:hover {
+     color: $hover-color-nav;
 }
+}
+
 /* Sobre */
  .about-container {
      margin: 10px;
 }
  .about-container h1 {
-     font-size: 3em;
      line-height: 1;
      max-width: 960px;
      margin: 0 auto;
      padding: 50px 10px;
-     color: black;
+     @include text-conf($font-color-secondary, 3em, 'Nunito');
 }
  .about-title {
-     border-bottom: #122ab2 2px solid;
+     border-bottom: $background-header 2px solid;
 }
  .about-content {
      display: flex;
@@ -89,10 +99,8 @@
      font-size: 1.25em;
      line-height: 1.4;
      margin-bottom: 1em;
-     color: #7c7c7c;
+     color: $font-color-tertiary;
      padding: 10px 0px;
-    /* flex: 1 0 260px;
-     */
 }
  .about-images {
      display: flex;
@@ -103,12 +111,11 @@
 }
 /* Produtos */
  .products h1{
-     font-size: 3em;
-     font-family: var(Nunito);
      padding: 50px 10px;
      max-width: 960px;
      margin: 0 auto;
-     border-top: #122ab2 2px solid;
+     border-top: $background-header 2px solid;
+     @include text-conf($font-color-secondary, 3em, 'Nunito');
 }
  .produts-cards {
      display: flex;
@@ -122,24 +129,24 @@
 }
  .card h2 {
      font-size: 3em;
-     color: #a4a4a4;
-     background: #f7f7f7;
+     color: $font-color-card;
+     background: $background-card;
      padding: 60px 20px;
 }
  #purple {
-     border-top: #ae81ff 6px solid;
+     border-top: $border-card-primary 6px solid;
      align-self: flex-end;
 }
  #pink {
-     border-top: #f9265e 6px solid;
+     border-top: $border-card-secondary 6px solid;
 }
  #blue {
-     border-top: #66d9eb 6px solid;
+     border-top: $border-card-tertiary 6px solid;
      align-self: flex-end;
 }
 /* Planos */
  .plams-container {
-     background: #f7f7f7;
+     background: $background-card;
      padding: 60px;
      align-items: flex-end;
      display: flex;
@@ -149,13 +156,13 @@
 }
  .plam-items {
      flex: 1 1 260px;
-     border: 4px solid white;
+     border: 4px solid $font-color-primary;
      padding: 20px;
      margin: 10px;
 }
  .plam-items h1 {
      font-size: 3em;
-     color: #a4a4a4;
+     color: $font-color-card;
      text-align: center;
      margin-top: 20px;
 }
@@ -167,8 +174,8 @@
      text-align: center;
      font-weight: bold;
      padding: 10px 0 5px 0;
-     border-top: 4px solid white;
-     border-bottom: 4px solid white;
+     border-top: 4px solid $font-color-primary;
+     border-bottom: 4px solid $font-color-primary;
 }
  .plam-items span sup {
      font-size: 16px;
@@ -184,19 +191,21 @@
      display: block;
      margin: 20px auto;
      border: 4px solid;
-     color: #222222;
+     color: $font-color-secondary;
      text-transform: uppercase;
      font-weight: bold;
      font-size: 2.25em;
      padding: 15px 60px;
      text-align: center;
      cursor: pointer;
+     transition: 0.4s;
 }
- .plam-items button:hover {
-     color: white;
-     background: #2c70ff;
+.buy {
+    &:hover{
+        color: $font-color-primary;
+        background: $hover-color-plans;
+    }
 }
-/* Qualidade */
  .quality {
      margin-top: 60px;
 }
@@ -215,21 +224,19 @@
      flex: wrap;
 }
  .quality-content {
-    /* background: red;
-     */
      flex: 1 1 200px;
      margin: 20px 10px;
      min-width: 260px;
 }
  .quality-content h2 {
      font-size: 2.25em;
-     color: #a4a4a4;
+     color: $font-color-card;
      margin-bottom: 20px;
 }
  .quality-content p {
      font-size: 1.25em;
      line-height: 1.4;
-     color: #7c7c7c;
+     color: $font-color-tertiary;
 }
 /* News Letter */
  .content {
@@ -239,17 +246,17 @@
      margin: 0 auto;
 }
  .news-letter {
-     background: #e0dddd;
+     background-color: $background-news-letter;
 }
  .news-items h1 {
      font-size: 3em;
-     color: #a4a4a4;
+     color: $font-color-card;
 }
  .news-items p {
      font-size: 1.25em;
      font-style: italic;
      max-width: 230px;
-     color: #7c7c7c;
+     color: $font-color-tertiary;
      margin-bottom: 10px;
 }
  .news-items {
@@ -263,33 +270,30 @@
 }
  .form input{
      flex: 3 1 460px;
-     font-size: 1.25em;
-     color: #7c7c7c;
      font-style: italic;
-     font-family: "Nunito", Helvetica, Arial, sans-serif;
      border: 4px solid #2c70ff;
      height: 70px;
      cursor: text;
      padding: 0 5px;
+     @include text-conf($font-color-tertiary, 1.25em, 'Nunito');
 }
  .form button {
      background-color: #2c70ff;
      padding: 12px 60px;
-     font-family: var(Nunito);
-     color: white;
-     font-size: 1.25em;
      height: 70px;
      cursor: pointer;
      border: none;
+     @include text-conf($font-color-primary, 1.25em, 'Nunito');
 }
 /* Fotter */
  .footer {
-     background: #2c70ff;
-     color: #122ab2;
+     background: $background-navbar;
+     color: $background-header;
      padding: 100px;
      margin: 0 auto;
      text-align: center;
      justify-content: center;
      font-size: 1.25em;
+     @include text-conf($background-header, 1.25em, 'Nunito');
 }
  
